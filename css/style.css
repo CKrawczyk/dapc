@@ -137,7 +137,7 @@ tr.collapse.in {
 }
 
 .modal-dialog {
-    width: 800px;
+    max-width: 800px;
     max-height: 800px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -178,4 +178,10 @@ tr.collapse.in {
     white-space: nowrap;
     vertical-align: middle;
     display: table-cell;
+}
+
+@media (max-width: 991px) {
+    #body_container {
+        width: auto;
+    }
 }
