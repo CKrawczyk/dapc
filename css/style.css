@@ -1,0 +1,181 @@
+.box {
+    background-color: rgba(200,200,200,.85);
+    padding: 5px 10px;
+    margin: 0px -10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgba(100,100,100,.5);
+}
+
+.top-buffer {
+    margin-top: 10px;
+}
+
+.top-buffer-small {
+    margin-top: 2px;
+}
+
+body {
+    margin-top: 10px;
+}
+
+#body_container {
+    background-image: url("../images/RedDragon.png");
+    background-size: 100%;
+}
+
+.input-group-addon {
+    width: 20%;
+}
+
+.title {
+    text-align: center;
+}
+
+.no-margin {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.no-margin-left {
+    padding-left: 1px;
+}
+
+.no-margin-right {
+    padding-right: 1px;
+}
+
+.font-sm > .input-group-addon {
+    font-size: 10px;
+    text-align: right;
+    padding-right: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: auto;
+}
+
+.font-sm > .check {
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+input[type="text"],
+.selectpicker {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #aaa;
+}
+
+.input-group-sm > .form-control {
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+/*
+.container {
+    width: 1200px;
+}*/
+
+#basic_info {
+    min-height: 78px;
+}
+
+#utility_info {
+    height: 78px;
+}
+
+#health_and_mana {
+    height: 96px;
+}
+
+#stats {
+    max-height: 786px;
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+#weapons {
+    height: 226px;
+}
+
+#talents_and_powers {
+    height: 244px;
+}
+
+#languages {
+    height: 164px;
+}
+
+#equipment {
+    height: 228px;
+}
+
+#money {
+    height: 66px;
+}
+
+#spells {
+    max-height: 754px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#controls {
+    height: 52px;
+}
+
+tr.collapse.in {
+    display: table-row;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.popover {
+    width: 400px;
+}
+
+.modal-dialog {
+    width: 800px;
+    max-height: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.spell-prop,
+.spell-name {
+    width: 170px;
+}
+
+.spell-attr {
+    width: auto;
+}
+
+.tree {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+.tree > tbody > tr > td,
+.table > tbody > tr > td {
+    border-bottom: 1px solid #a5a5a5;
+    border-top: none;
+}
+
+#stats,
+#equipment,
+#controls {
+    margin-bottom: 10px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group-title {
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+}

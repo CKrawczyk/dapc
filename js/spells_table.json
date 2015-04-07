@@ -1,0 +1,212 @@
+{
+    "Creation": {
+        "Attack": {
+            "Glyph of Paralysis": {
+                "tn": "10", 
+                "full damage": "paralyzed for 1d3 rounds, defense set to 7", 
+                "mp": "3", 
+                "AoE": "2 yard radius", 
+                "test": "Constitution (Stamina)", 
+                "range": "None", 
+                "cast time": "1 min.", 
+                "half damage": "No effect"
+            } 
+        },
+        "Utility": {
+            "Heal": {
+                "tn": "10", 
+                "full damage": "Heal target 1d6 for every point of mana spent", 
+                "mp": "1-3", 
+                "AoE": "None", 
+                "test": "None", 
+                "range": "None", 
+                "cast time": "Major Action", 
+                "half damage": "None"
+            },
+            "Spell Wisp": {
+                "tn": "11", 
+                "full damage": "You summon a wisp that gives you +1 to Spellpower for 1 hr.", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "None", 
+                "range": "Self", 
+                "cast time": "1 min.", 
+                "half damage": "None"
+            }
+        },
+        "Enhancement": {
+            "Heroic Offense": {
+                "tn": "11", 
+                "full damage": "One ally gains +1 to Strength for rest of encounter", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "None", 
+                "range": "None", 
+                "cast time": "Major Action", 
+                "half damage": "None"
+            }
+        },
+        "Defense": {
+        }
+    },
+    "Entropy": {
+        "Attack": {
+            "Daze": {
+                "tn": "11", 
+                "full damage": "As above and taget can not take any actions for 1 turn", 
+                "mp": "2", 
+                "AoE": "None", 
+                "test": "Willpower (Self-Discipline)", 
+                "range": "10 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Target suffers -1 penalty to all ability tests for 1 turn"
+            },
+            "Weakness": {
+                "tn": "11", 
+                "full damage": "As above and -1 to Strength and Dexterity", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "Magic (Spirit)", 
+                "range": "20 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Target suffers -5 to Speed for a number of rounds equal to Dragon Die"
+            },
+            "Vulnerability Hex": {
+                "tn": "12", 
+                "full damage": "As above and -2 on test vs. Spellpower until end of encounter", 
+                "mp": "4", 
+                "AoE": "None", 
+                "test": "Magic (Entropy)", 
+                "range": "20 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Target suffers -1 to Defense until end of encounter"
+            } 
+        },
+        "Utility": {
+            "Drain Life": {
+                "tn": "12", 
+                "full damage": "Target takes 1d6+Magic (pen) damage, you heal that amount", 
+                "mp": "4", 
+                "AoE": "None", 
+                "test": "Constitution (Stamina)", 
+                "range": "10 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Target takes 1d6 (pen) damage, you heal that amount"
+            }
+        },
+        "Enhancement": {
+        },
+        "Defense": {
+        }
+    },
+    "Primal": {
+        "Attack": {
+            "Winters Grasp": {
+                "tn": "12", 
+                "full damage": "1d6 (pen) on cast, each round if test is failed target takes 1d6 (pen) and -2 to Speed for rounds equal to your Magic", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "Constitution (Stamina)", 
+                "range": "20 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Spell ends"
+            },
+            "Shock": {
+                "tn": "13", 
+                "full damage": "1d6+Magic (pen)", 
+                "mp": "4", 
+                "AoE": "6-yard by 6-yard area", 
+                "test": "Constitution (Stamina)", 
+                "range": "None", 
+                "cast time": "Major Action", 
+                "half damage": "1d6 (pen)"
+            },
+            "Flame Blast": {
+                "tn": "12", 
+                "full damage": "2d6+1", 
+                "mp": "3", 
+                "AoE": "8 yards long, 2 yards wide", 
+                "test": "Dexterity (Acrobatics)", 
+                "range": "None", 
+                "cast time": "Major Action", 
+                "half damage": "1d6+1"
+            },
+            "Stonefist": {
+                "tn": "11", 
+                "full damage": "1d6+Magic (pen) and target is knocked prone", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "Constitution (Stamina)", 
+                "range": "20 yards", 
+                "cast time": "Major Action", 
+                "half damage": "1d6 (pen)"
+            }
+        },
+        "Utility": {
+        },
+        "Enhancement": {
+        },
+        "Defense": {
+            "Rock Armor": {
+                "tn": "10", 
+                "full damage": "Gain an Armor Rating equal to you Magic for 1-6 hours (depending on MP spent)", 
+                "mp": "3-8", 
+                "AoE": "None", 
+                "test": "None", 
+                "range": "Self", 
+                "cast time": "1 min.", 
+                "half damage": "None"
+            }
+        }
+     },
+    "Spirit": {
+        "Attack": {
+            "Walking Bomb": {
+                "tn": "13", 
+                "full damage": "1d6+1 (pen) on cast and an additional 1d6+1 (pen) each round the test is failed", 
+                "mp": "4", 
+                "AoE": "If spell kills target, anyone within 4 yards takes 2d6 damage", 
+                "test": "Constitution (Stamina)", 
+                "range": "10 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Spell ends"
+            },
+              "Arcane Bolt": {
+                  "tn": "10", 
+                  "full damage": "2d6+Dragon Die", 
+                  "mp": "2", 
+                  "AoE": "None", 
+                  "test": "Dexterity (Acrobatics)", 
+                  "range": "30 yards", 
+                  "cast time": "Major Action", 
+                  "half damage": "1d6"
+              }   
+        },
+        "Utility": {
+            "Mana Drain": {
+                "tn": "12", 
+                "full damage": "Every spell cast by the target costs 1 extra MP and you gain 1 MP", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "Magic (Spirit)", 
+                "range": "30 yards", 
+                "cast time": "Major Action", 
+                "half damage": "No effect"
+            }    
+        },
+        "Enhancement": {
+        },
+        "Defense": {
+            "Spell Shield": {
+                "tn": "13", 
+                "full damage": "Lasts number of rounds equal to your Magic, any spell cast on you has no effect, but you must pay MP equal to that spells cost", 
+                "mp": "4", 
+                "AoE": "None", 
+                "test": "None", 
+                "range": "Self", 
+                "cast time": "Major Action", 
+                "half damage": "None"
+            }
+        }
+    }
+}

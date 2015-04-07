@@ -1,0 +1,1303 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Dragon Age PC</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap-select.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap-switch.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/jquery.treegrid.css">
+    <link type="text/css" rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.treegrid.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.treegrid.bootstrap3.js"></script>
+  </head>
+  <body>
+
+     <div class="container" id="body_container">
+
+       <div class="row">
+         <!--Basic info-->
+         <div class="col-md-8">
+           <div class="box" id="basic_info">
+             <div class="row">
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Name</span>
+                   <input type="text" class="form-control edit-lock" id="name">
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Gender</span>
+                   <select class="selectpicker edit-lock" data-width="100%" id="gender">
+                     <option data-hidden="true"> </option>
+                     <option>Male</option>
+                     <option>Female</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Race</span>
+                   <select class="selectpicker edit-lock" data-width="100%" id="race">
+                     <option data-hidden="true"> </option>
+                     <option>Human</option>
+                     <option>Elf</option>
+                     <option>Dwarf</option>
+                     <option>Qunari</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Class</span>
+                   <select class="selectpicker edit-lock" data-width="100%" id="class">
+                     <option data-hidden="true"> </option>
+                     <option>Mage</option>
+                     <option>Rogue</option>
+                     <option>Warrior</option>
+                   </select>
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Age</span>
+                   <input type="text" class="form-control edit-lock" id="age">
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Back.</span>
+                   <input type="text" class="form-control edit-lock" id="background">
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Level</span>
+                   <input type="text" class="form-control edit-lock is-int" id="level">
+                 </div>
+               </div>
+               <div class="col-sm-3 col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">XP</span>
+                   <input type="text" class="form-control edit-lock is-int" id="XP">
+                 </div>
+               </div>             
+             </div>
+           </div>
+         </div>
+
+         <!--Utility info-->
+         <div class="col-md-4">
+           <div class="box" id="utility_info">
+             <div class="row">
+               <div class="col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Defense</span>
+                   <input type="text" class="form-control is-int" id="defense">
+                 </div>
+               </div>
+               <div class="col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Armor</span>
+                   <input type="text" class="form-control is-int" id="armor">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Speed</span>
+                   <input type="text" class="form-control is-int" id="speed">
+                 </div>
+               </div>
+               <div class="col-xs-6">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">AP</span>
+                   <input type="text" class="form-control is-int" id="AP">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>         
+       </div>
+       
+       <div class="row top-buffer">
+         
+         <!--Col 1-->
+         <div class="col-lg-4 col-md-6">
+           <!--Health and Mana-->
+           <div class="box" id="health_and_mana">
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Health</span>
+                   <input type="text" class="form-control edit-lock is-int" id="health_max">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control is-int" id="health_current" >
+                   <div class="input-group-btn">
+                     <button class="btn btn-default" type="button" id="health_button" data-toggle="popover">±</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-btn" style="width: 20%;"></span>
+                   <span class="input-group-title title" style="width: 36%;">Maximum</span>
+                   <span class="input-group-title title" style="width: 36%;">Current</span>
+                   <span class="input-group-btn" style="width: 8%;"></span>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-addon">Mana</span>
+                   <input type="text" class="form-control edit-lock is-int" id="mana_max">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control is-int" id="mana_current" >
+                   <div class="input-group-btn">
+                     <button class="btn btn-default" type="button" id="mana_button" data-toggle="popover">±</button>
+                   </div>
+                 </div>
+               </div>
+             </div>   
+           </div>
+
+           <!--Stats-->
+           <div class="box top-buffer" id="stats">
+             
+             <div class="row">
+               <div class="col-xs-12">
+                 <table class="table table-condensed" style="border-collapse:collapse;">
+
+                   <tbody>
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#communication_row" >
+                             Communication
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="communication_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="communication_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="communication_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="communication_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="communication_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="communication_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="communication_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#constitution_row">
+                             Constitution
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="constitution_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="constitution_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="constitution_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="constitution_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="constitution_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="constitution_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="constitution_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#cunning_row">
+                             Cunning
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="cunning_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="cunning_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="cunning_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="cunning_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="cunning_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="cunning_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="cunning_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#dexterity_row">
+                             Dexterity
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="dexterity_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="dexterity_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="dexterity_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="dexterity_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="dexterity_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="dexterity_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="dexterity_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#magic_row">
+                             Magic
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="magic_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="magic_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="magic_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="magic_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="magic_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="magic_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="magic_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#perception_row">
+                             Percption
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="perception_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="perception_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="perception_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="perception_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="perception_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="perception_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="perception_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#strength_row">
+                             Strength
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="strength_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="strength_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="strength_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="strength_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="strength_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="strength_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="strength_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+
+                     <tr>
+                       <td>
+                         <div class="row">
+                           <div class="accordion-toggle col-xs-8" data-toggle="collapse" data-target="#willpower_row">
+                             Willpower
+                           </div>
+                           <div class="col-xs-4">
+                             <div class="input-group input-group-sm">
+                               <span class="input-group-addon">
+                                 <input type="checkbox" id="willpower_prime" disabled>
+                               </span>
+                               <input type="text" class="form-control edit-lock is-int" id="willpower_value">
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td class="hiddenRow">
+                         <div class="accordian-body collapse" id="willpower_row">
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="willpower_01">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_02">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_03">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_04">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="willpower_05">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_06">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_07">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_08">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row top-buffer-small">
+                             <div class="col-xs-12">
+                               <div class="input-group input-group-sm">
+                                 <input type="text" class="form-control edit-lock" id="willpower_09">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_10">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_11">
+                                 <span class="input-group-btn" style="width:3px;"></span>
+                                 <input type="text" class="form-control edit-lock" id="willpower_12">
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </td>
+                     </tr>
+                     
+                   </tbody>
+                 </table>
+               </div>
+             </div>            
+           </div>
+           
+         </div><!--col1-->
+
+         <!--Col 2-->
+         <div class="col-lg-4 col-md-6">
+           <!--Weapons-->
+           <div class="box" id="weapons">
+             
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-title title" style="width: 32%;">Weapon</span>
+                   <span class="input-group-btn" style="width: 0.5%;"></span>
+                   <span class="input-group-title title" style="width: 22%;">Attack</span>
+                   <span class="input-group-title title" style="width: 22%;">Damage</span>
+                   <span class="input-group-btn" style="width: 1%;"></span>
+                   <span class="input-group-title title" style="width: 24%;">Range</span>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="row">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_01">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_01">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_01" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_01">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_01" >
+                 </div>
+               </div>
+             </div>
+             
+             <div class="row top-buffer-small">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_02">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_02">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_02" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_02">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_02" >
+                 </div>
+               </div>
+             </div>
+
+             <div class="row top-buffer-small">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_03">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_03">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_03" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_03">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_03" >
+                 </div>
+               </div>
+             </div>
+
+             <div class="row top-buffer-small">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_04">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_04">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_02" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_04">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_04" >
+                 </div>
+               </div>
+             </div>
+
+             <div class="row top-buffer-small">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_05">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_05">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_05" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_05">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_05" >
+                 </div>
+               </div>
+             </div>
+
+             <div class="row top-buffer-small">
+               <div class="col-xs-4 no-margin-right">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="weapon_06">
+                 </div>
+               </div>
+               <div class="col-xs-5 no-margin">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="attack_06">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="damage_06" >
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="range_s_06">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control" id="range_l_06" >
+                 </div>
+               </div>
+             </div>             
+           </div>
+
+           <!--Talents and Powers-->
+           <div class="box top-buffer" id="talents_and_powers">
+             <div class="row">
+               <div class="col-xs-12 title">
+                 Talents & Class Powers
+               </div>
+               
+               <div class="col-xs-3 no-margin-right">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Axes</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="axes" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Bludg.</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="bludgeons" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Bows</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="bows" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Brawl</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="brawling" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-3 no-margin-right">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">H blades</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="h_blades" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">L blades</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="l_blades" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Spears</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="spears" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-3 no-margin-left">
+                 <div class="input-group font-sm input-group-sm">
+                   <span class="input-group-addon">Staves</span>
+                   <span class="input-group-addon check">
+                     <input type="checkbox" id="staves" class=" edit-lock">
+                   </span>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="class_power_01">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_02">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_03">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="class_power_04">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_05">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_06">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="class_power_07">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_08">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_09">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="class_power_10">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_11">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_12">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="class_power_13">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_14">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="class_power_15">
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!--Languages-->
+           <div class="box top-buffer" id="languages">
+             <div class="row">
+               <div class="col-xs-12 title">
+                 Languages
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="language_01">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_02">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_03">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="language_04">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_05">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_06">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="language_07">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_08">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_09">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control edit-lock" id="language_10">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_11">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control edit-lock" id="language_12">
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!--Equipment-->
+           <div class="box top-buffer" id="equipment">
+             <div class="row">
+               <div class="col-xs-12 title">
+                 Equipment
+               </div>
+             </div>
+
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_01">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_02">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_03">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_04">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_05">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_06">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_07">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_08">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_09">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_10">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_11">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_12">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_13">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_14">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_15">
+                 </div>
+               </div>
+             </div>
+             <div class="row top-buffer-small">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control" id="equipment_16">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_17">
+                   <span class="input-group-btn" style="width:3px;"></span>
+                   <input type="text" class="form-control" id="equipment_18">
+                 </div>
+               </div>
+             </div>
+             
+           </div>
+         </div> <!--col2-->
+
+         
+         <!--Col 3-->
+         <div class="col-lg-4 col-md-6">
+           <!--Money-->
+           <div class="box" id="money">
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <span class="input-group-title title" style="width: 31%;">Gold</span>
+                   <span class="input-group-title title" style="width: 31%;">Silver</span>
+                   <span class="input-group-title title" style="width: 31%;">Copper</span>
+                   <span class="input-group-btn" style="width: 7%;"></span>
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-xs-12">
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control is-int" id="gold">
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control is-int" id="silver" >
+                   <span class="input-group-btn" style="width:0px;"></span>
+                   <input type="text" class="form-control is-int" id="copper" >
+                   <div class="input-group-btn">
+                     <button class="btn btn-default" type="button" id="money_button" data-toggle="popover">±</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!--Spells-->
+           <div class="box top-buffer" id="spells">
+             <div class="row">
+               <div class="col-xs-12 title">
+                 Spells
+               </div>
+               <div class="col-xs-12 title">
+                 
+                 <table class="tree" id="known_spell_tree" align="right">
+                   <thead>
+                     <tr>
+                       <th class="col-xs-5">Name</th>
+                       <th class="col-xs-3"></th>
+                       <th class="col-xs-1">MP</th>
+                       <th class="col-xs-1">TN</th>
+                       <th class="col-xs-3 no-margin"><button class="btn btn-default btn-xs" type="button" data-toggle="modal" data-target="#spell_modal" id="add_spell" style="width:100%">±</button></th>
+                     </tr>
+                   </thead>
+                   <tbody id="known_spell_body">
+                   </tbody>
+                 </table>
+                 
+               </div>
+             </div>
+           </div>
+
+           <!--Controls-->
+           <div class="box top-buffer" id="controls">
+             <div class="row">
+               <div class="col-xs-6">
+                 <div class="input-group">
+                   <span class="input-group-addon">
+                     Edit
+                   </span>
+                   <span class="input-group-addon">
+                     <input type="checkbox" name="edit_switch" id="edit_switch" checked>
+                   </span>
+                 </div>
+               </div>
+               <div class="col-xs-6">
+                 <input type="file" id="file_upload" style="display:none;">
+                 <a download="save.json" href="#" id="file_save" style="display:none;">Save</a>
+                 <div class="btn-group btn-group-justified" role="group">
+                   <div class="btn-group" role="group">
+                     <button class="btn btn-default" type="button" id="load">Load</button>
+                   </div>
+                   <div class="btn-group" role="group">
+                     <button class="btn btn-default" type="button" id="save">Save</button>
+                   </div>
+                   <div class="btn-group" role="group">
+                     <button class="btn btn-default edit-lock" type="button" id="clear">Clear</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         
+       </div> <!--col3-->
+       
+
+
+
+     </div> <!--container-->
+
+     <div id="popover_health_mana_body" style="display: none;">
+       <div class="row">
+         <div class="col-xs-12">
+           <input type="text" class="form-control is-int" id="add_remove_value" style="width:100%">
+         </div>
+         <div class="col-xs-12 top-buffer">
+           <div class="btn-group btn-group-justified" role="group">
+             <div class="btn-group" role="group">
+               <button class="btn btn-default" type="button" id="add">+</button>
+             </div>
+             <div class="btn-group" role="group">
+               <button class="btn btn-default" type="button" id="remove">-</button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div id="popover_cast_body" style="display: none;">
+       <div class="row">
+         <div class="col-xs-12">
+           <input type="text" class="form-control is-int" id="cast_value" style="width:100%">
+         </div>
+         <div class="col-xs-12 top-buffer">
+           <div class="btn-group btn-group-justified" role="group">
+             <div class="btn-group" role="group">
+               <button class="btn btn-default disabled" type="button" id="spell_cast_po">Cast</button>
+             </div>
+             <div class="btn-group" role="group">
+               <button class="btn btn-default" type="button" id="spell_cancel_po">Cancel</button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div id="popover_money_body" style="display: none;">
+       <div class="row">
+         <div class="col-xs-4 title no-margin-right">
+           Gold
+         </div>
+         <div class="col-xs-4 title no-margin">
+           Silver
+         </div>
+         <div class="col-xs-4 title no-margin-left">
+           Copper
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-xs-12">
+           <div class="input-group input-group-sm">
+             <input type="text" class="form-control is-int" id="new_gold">
+             <span class="input-group-btn" style="width:0px;"></span>
+             <input type="text" class="form-control is-int" id="new_silver" >
+             <span class="input-group-btn" style="width:0px;"></span>
+             <input type="text" class="form-control is-int" id="new_copper" >
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-xs-12 top-buffer">
+           <div class="btn-group btn-group-justified" role="group">
+             <div class="btn-group" role="group">
+               <button class="btn btn-default" type="button" id="add">+</button>
+             </div>
+             <div class="btn-group" role="group">
+               <button class="btn btn-default" type="button" id="remove">-</button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="modal fade" tabindex="-1" role="dialog" id="spell_modal" style="display: none;">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h4 class="modal-title">Add/Remove Spells</h4>
+           </div>
+           <div class="modal-body">
+             <div class="row">
+               <div class="col-xs-12">
+                 <table class="tree" id="spell_tree">                   
+                 </table>
+               </div>
+             </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal" id="update_spells">Update Spells</button>
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     <script src="./js/dapc.js"></script>
+  </body>
+</html>
