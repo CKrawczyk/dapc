@@ -30,6 +30,63 @@ switch_size();
 
 window.onresize = switch_size
 
+// Fill in the more tedious parts using js
+
+// The skills table
+function make_skill_row1(skill_name) {
+    var lower_name = skill_name.toLowerCase();
+    var tr = $("<tr></tr>");
+    var td = $("<td></td>").appendTo(tr);
+    var row = $("<div></div>").addClass("row").appendTo(td);
+    var div1 = $("<div></div>").addClass("accordion-toggle col-xs-8").attr("data-toggle", "collapse").attr("data-target","#"+lower_name+"_row").appendTo(row);
+    var span1 = $("<span></span>").addClass("skill-arrow glyphicon glyphicon-chevron-right").appendTo(div1);
+    var h4 = $("<h4></h4>").html(skill_name).appendTo(div1);
+
+    var div2 = $("<div></div>").addClass("col-xs-4").appendTo(row);
+    var input_group = $("<div></div>").addClass("input-group input-group-sm").appendTo(div2);
+    var span2 = $("<span></span>").addClass("input-group-addon").appendTo(input_group);
+    var check_box = $("<input>").attr("type", "checkbox").attr("id",lower_name+"_prime").prop("disabled", true).appendTo(span2);
+    var input = $("<input>").addClass("form-control edit-lock is-int").attr("id",lower_name+"_value").attr("type", "text").appendTo(input_group);
+    
+    return tr
+}
+
+function pad(n) {
+    return (n < 10) ? ("0" + n) : n;
+}
+
+function make_skill_row2_inner(skill_name_lower,start_num) {
+    var div1 = $("<div></div>").addClass("row top-buffer-small");
+    var div2 = $("<div></div>").addClass("col-xs-12").appendTo(div1);
+    var input_group = $("<div></div>").addClass("input-group input-group-sm").appendTo(div2);
+    for (var i=start_num; i<start_num+4; i++) {
+        var input = $("<input>").attr("type", "text").addClass("form-control edit-lock").attr("id", skill_name_lower+"_"+pad(i)).appendTo(input_group);
+        if (i<start_num+3) {
+            var span = $("<span></span>").addClass("input-group-btn").css("width","3px").appendTo(input_group);
+        }
+    }
+    return div1;
+}
+
+function make_skill_row2(skill_name,num_rows) {
+    var lower_name = skill_name.toLowerCase();
+    var tr = $("<tr></tr>");
+    var td = $("<td></td>").addClass("hiddenRow").appendTo(tr);
+    var div1 = $("<div></div>").addClass("accordian-body collapse").attr("id",lower_name+"_row").appendTo(td);
+    for (var i=0; i<num_rows; i++) {
+        var row = make_skill_row2_inner(lower_name,i*4+1);
+        row.appendTo(div1)
+    }
+    return tr
+}
+
+$.each(["Communication","Constitution","Cunning","Dexterity","Magic","Perception","Strength","Willpower"], function (idx, value) {
+    var r1 = make_skill_row1(value);
+    var r2 = make_skill_row2(value, 4);
+    r1.appendTo("#accordion_table");
+    r2.appendTo("#accordion_table");
+});
+
 // adjust the primary abilities when the class is changed
 $("#class").on("change", function() {
     switch(this.value) {
@@ -260,7 +317,7 @@ $.getJSON("./js/spells_table.json", function(data) {
                     var tr3 = $("<tr></tr>").addClass("treegrid-"+i).addClass("treegrid-parent-"+p2).appendTo($("#spell_tree")).html('<td class="spell-name">'+key3+'</td> <td> <input type="checkbox" class="spell_check" id="spell_'+spell_name+'"> </td>');
                     p3=i;
                     i+=1;
-                    $.each(['tn', 'mp', 'cast time', 'range', 'test', 'full damage', 'half damage', 'AoE'], function(index, value4){
+                    $.each(['requirement','tn', 'mp', 'cast time', 'range', 'test', 'full damage', 'half damage', 'AoE'], function(index, value4){
                         var tr4 = $("<tr></tr>").addClass("treegrid-"+i).addClass("treegrid-parent-"+p3).appendTo($("#spell_tree")).html('<td class="spell-prop">'+value4+'</td> <td class="spell-attr">'+value3[value4]+'</td>');
                         i+=1
                     });
