@@ -20,9 +20,14 @@ body {
 }
 
 h4 {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 300;
     margin: 0px;
-    margin-top: 7px;
+    display: inline;
+}
+
+.accordion-toggle {
+    margin-top: 5px;
 }
 
 #body_container {
@@ -198,14 +203,21 @@ tr.collapse.in {
 
     body,
     h4 {
-        font-size: 18px;
+        font-size: 25px;
     }
     
     .input-group-sm > .input-group-addon,
     .input-group-sm > .form-control,
     .input-group-sm > .input-group-btn > .btn {
-        font-size: 15px;
-        height: 35px;
+        font-size: 20px;
+        height: 50px;
+    }
+    
+    .input-group > .input-group-addon,
+    .input-group > .form-control,
+    .input-group > .input-group-btn > .btn {
+        font-size: 20px;
+        height: 50px;
     }
     
     .input-group-sm > .input-group-btn > .btn {
@@ -224,10 +236,11 @@ tr.collapse.in {
         min-width: 99%;
     }
 
-    .btn-xs {
-        font-size: 18px;
+    .btn-xs,
+    .btn {
+        font-size: 20px;
     }
-
+    
     input[type="checkbox"] {
         width: 25px;
         height: 25px;

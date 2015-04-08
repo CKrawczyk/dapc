@@ -491,3 +491,11 @@ function clear_all() {
 }
 
 clear_all();
+
+// add arrows to skill expander
+function toggleChevron(e) {
+    $(e.target).parent().parent().prev().find('.skill-arrow').toggleClass('glyphicon-chevron-right glyphicon-chevron-down')
+}
+
+$("#accordion_table").on('hidden.bs.collapse', toggleChevron)
+$("#accordion_table").on('show.bs.collapse', toggleChevron)
