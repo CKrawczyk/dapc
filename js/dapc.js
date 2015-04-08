@@ -1,5 +1,5 @@
 // set up the edit switch
-$.fn.bootstrapSwitch.defaults.size = 'mini';
+//$.fn.bootstrapSwitch.defaults.size = 'mini';
 $("[name='edit_switch']").bootstrapSwitch();
 $("[name='edit_switch']").on("switchChange.bootstrapSwitch", function(event, state) {
     if (state) {
@@ -16,6 +16,19 @@ $("[name='edit_switch']").on("switchChange.bootstrapSwitch", function(event, sta
         $("#add_spell").addClass("disabled");
     }
 })
+
+function switch_size(event) {
+    window_width=parseInt($('#body_container').css('width'));
+    if (parseInt($('html').css('width'))<=991) {
+        $("[name='edit_switch']").bootstrapSwitch('size', 'normal');
+    } else {
+        $("[name='edit_switch']").bootstrapSwitch('size', 'mini');
+    }
+}
+
+switch_size();
+
+window.onresize = switch_size
 
 // adjust the primary abilities when the class is changed
 $("#class").on("change", function() {
