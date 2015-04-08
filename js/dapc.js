@@ -114,7 +114,52 @@ function set_of_3_edit_lock(name_lower,start_num){
     return div1;
 }
 
-// equipment box
+// Talents
+function talent_check(talent_name) {
+    var lower_name = talent_name.toLowerCase();
+    lower_name = lower_name.replace(".","");
+    lower_name = lower_name.replace(" ","_");
+    var input_group = $("<div></div>").addClass("input-group font-sm input-group-sm");
+    var span1 = $("<span></span>").addClass("input-group-addon").html(talent_name).appendTo(input_group);
+    var span2 = $("<span></span>").addClass("input-group-addon check").appendTo(input_group);
+    var check = $("<input>").attr("type","checkbox").attr("id",lower_name).addClass("edit-lock").appendTo(span2);
+    return input_group;
+}
+
+function talent_row(list) {
+    var row = $("<div></div>").addClass("row top-buffer-small")
+    $.each(list, function(idx, value) {
+        var div = $("<div></div>").addClass("col-xs-3");
+        if (idx==0) {
+            div.addClass("no-margin-right")
+        } else if (idx==3) {
+            div.addClass("no-margin-left")
+        } else {
+            div.addClass("no-margin")
+        }
+        div.appendTo(row);
+        tc=talent_check(value)
+        tc.appendTo(div);
+    });
+    row.appendTo("#talents_and_powers")
+}
+
+talent_row(["Axes", "Bludg.", "Bows", "Brawl"]);
+talent_row(["H blades", "L blades", "Spears", "Staves"]);
+
+// Class Powers
+for (var i=0; i<5; i++) {
+    var r = set_of_3_edit_lock("class_power", i*3+1);
+    r.appendTo("#talents_and_powers")
+}
+
+// Languages box
+for (var i=0; i<4; i++) {
+    var r = set_of_3_edit_lock("language", i*3+1);
+    r.appendTo("#languages")
+}
+
+// Equipment box
 for (var i=0; i<6; i++) {
     var r = set_of_3("equipment", i*3+1);
     r.appendTo("#equipment");
