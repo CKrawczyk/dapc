@@ -91,7 +91,7 @@ $(".is-int").on("change", function() {
 // create popovers for adding/removing health, mana, and money
 $("#health_button").popover({
     html: true,
-    placement: "right",
+    placement: "bottom",
     container: "body",
     content: function() {
         return $("#popover_health_mana_body").html();
@@ -129,7 +129,7 @@ $("#health_button").popover({
 
 $("#mana_button").popover({
     html: true,
-    placement: "right",
+    placement: "bottom",
     container: "body",
     content: function() {
         return $("#popover_health_mana_body").html();
