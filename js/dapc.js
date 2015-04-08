@@ -87,6 +87,39 @@ $.each(["Communication","Constitution","Cunning","Dexterity","Magic","Perception
     r2.appendTo("#accordion_table");
 });
 
+// Set of 3 input boxes to be used in many places
+function set_of_3(name_lower,start_num){
+    var div1 = $("<div></div>").addClass("row top-buffer-small");
+    var div2 = $("<div></div>").addClass("col-xs-12").appendTo(div1);
+    var input_group = $("<div></div>").addClass("input-group input-group-sm").appendTo(div2);
+    for (var i=start_num; i<start_num+3; i++) {
+        var input = $("<input>").attr("type", "text").addClass("form-control").attr("id", name_lower+"_"+pad(i)).appendTo(input_group);
+        if (i<start_num+2) {
+            var span = $("<span></span>").addClass("input-group-btn").css("width","3px").appendTo(input_group);
+        }
+    }
+    return div1;
+}
+
+function set_of_3_edit_lock(name_lower,start_num){
+    var div1 = $("<div></div>").addClass("row top-buffer-small");
+    var div2 = $("<div></div>").addClass("col-xs-12").appendTo(div1);
+    var input_group = $("<div></div>").addClass("input-group input-group-sm").appendTo(div2);
+    for (var i=start_num; i<start_num+3; i++) {
+        var input = $("<input>").attr("type", "text").addClass("form-control edit-lock").attr("id", name_lower+"_"+pad(i)).appendTo(input_group);
+        if (i<start_num+2) {
+            var span = $("<span></span>").addClass("input-group-btn").css("width","3px").appendTo(input_group);
+        }
+    }
+    return div1;
+}
+
+// equipment box
+for (var i=0; i<6; i++) {
+    var r = set_of_3("equipment", i*3+1);
+    r.appendTo("#equipment");
+}
+
 // adjust the primary abilities when the class is changed
 $("#class").on("change", function() {
     switch(this.value) {
