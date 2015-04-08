@@ -114,6 +114,35 @@ function set_of_3_edit_lock(name_lower,start_num){
     return div1;
 }
 
+// Weapons
+function weapon_row(idx) {
+   
+    
+    var row = $("<div></div>").addClass("row top-buffer-small");
+    var weapon = $("<div></div>").addClass("col-xs-4 no-margin-right").appendTo(row);
+    var input_group1 = $("<div></div>").addClass("input-group input-group-sm").appendTo(weapon);
+    var input1 = $("<input>").attr("type","text").attr("id","weapon_"+pad(idx)).addClass("form-control").appendTo(input_group1);
+
+    var att_dam = $("<div></div>").addClass("col-xs-5 no-margin").appendTo(row);
+    var input_group2 = $("<div></div>").addClass("input-group input-group-sm").appendTo(att_dam);
+    var input2 = $("<input>").attr("type","text").attr("id","attack_"+pad(idx)).addClass("form-control").appendTo(input_group2);
+    var span1 = $("<span></span>").addClass("input-group-btn").css("width","0px").appendTo(input_group2);
+    var input3 = $("<input>").attr("type","text").attr("id","damage_"+pad(idx)).addClass("form-control").appendTo(input_group2);
+
+    var range = $("<div></div>").addClass("col-xs-3 no-margin-left").appendTo(row);
+    var input_group3 = $("<div></div>").addClass("input-group input-group-sm").appendTo(range);
+    var input4 = $("<input>").attr("type","text").attr("id","range_s_"+pad(idx)).addClass("form-control").appendTo(input_group3);
+    var span2 = $("<span></span>").addClass("input-group-btn").css("width","0px").appendTo(input_group3);
+    var input5 = $("<input>").attr("type","text").attr("id","range_l_"+pad(idx)).addClass("form-control").appendTo(input_group3);
+
+    return row;
+}
+
+for (var i=0; i<6; i++) {
+    var r = weapon_row(i+1);
+    r.appendTo("#weapons");
+}
+
 // Talents
 function talent_check(talent_name) {
     var lower_name = talent_name.toLowerCase();
