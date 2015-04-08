@@ -19,9 +19,16 @@ body {
     margin-top: 10px;
 }
 
+h4 {
+    font-size: 16px;
+    margin: 0px;
+    margin-top: 7px;
+}
+
 #body_container {
     background-image: url("../images/RedDragon.png");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .input-group-addon {
@@ -81,11 +88,11 @@ input[type="text"],
 }
 
 #utility_info {
-    height: 78px;
+    min-height: 78px;
 }
 
 #health_and_mana {
-    height: 96px;
+    min-height: 96px;
 }
 
 #stats {
@@ -95,23 +102,23 @@ input[type="text"],
 }
 
 #weapons {
-    height: 226px;
+    min-height: 226px;
 }
 
 #talents_and_powers {
-    height: 244px;
+    min-height: 244px;
 }
 
 #languages {
-    height: 164px;
+    min-height: 164px;
 }
 
 #equipment {
-    height: 228px;
+    min-height: 228px;
 }
 
 #money {
-    height: 66px;
+    min-height: 66px;
 }
 
 #spells {
@@ -121,7 +128,7 @@ input[type="text"],
 }
 
 #controls {
-    height: 52px;
+    min-height: 52px;
 }
 
 tr.collapse.in {
@@ -183,5 +190,50 @@ tr.collapse.in {
 @media (max-width: 991px) {
     #body_container {
         width: auto;
+    }
+
+    #basic_info {
+        margin-bottom: 10px;
+    }
+
+    body,
+    h4 {
+        font-size: 18px;
+    }
+    
+    .input-group-sm > .input-group-addon,
+    .input-group-sm > .form-control,
+    .input-group-sm > .input-group-btn > .btn {
+        font-size: 15px;
+        height: 35px;
+    }
+    
+    .input-group-sm > .input-group-btn > .btn {
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 0px;
+        font-size: 20px;
+    }
+    
+    .input-group-sm > .input-group-addon {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
+    .modal-dialog {
+        min-width: 99%;
+    }
+
+    .btn-xs {
+        font-size: 18px;
+    }
+
+    input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+    }
+
+    .input-group-addon input[type="checkbox"] {
+        margin-top: 4px;
     }
 }
