@@ -116,8 +116,6 @@ function set_of_3_edit_lock(name_lower,start_num){
 
 // Weapons
 function weapon_row(idx) {
-   
-    
     var row = $("<div></div>").addClass("row top-buffer-small");
     var weapon = $("<div></div>").addClass("col-xs-4 no-margin-right").appendTo(row);
     var input_group1 = $("<div></div>").addClass("input-group input-group-sm").appendTo(weapon);

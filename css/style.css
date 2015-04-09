@@ -82,15 +82,12 @@ input[type="text"],
     border-color: #aaa;
 }
 
-.input-group-sm > .form-control {
+.input-group-sm > .form-control,
+.input-group > .form-control,
+.form-control {
     padding-right: 3px;
     padding-left: 3px;
 }
-
-/*
-.container {
-    width: 1200px;
-}*/
 
 #basic_info {
     min-height: 78px;
@@ -105,7 +102,7 @@ input[type="text"],
 }
 
 #stats {
-    max-height: 788px;
+    max-height: 790px;
     overflow-y: scroll;
     overflow-x: hidden
 }
@@ -131,7 +128,7 @@ input[type="text"],
 }
 
 #spells {
-    max-height: 754px;
+    max-height: 758px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -212,7 +209,9 @@ tr.collapse.in {
     
     .input-group-sm > .input-group-addon,
     .input-group-sm > .form-control,
-    .input-group-sm > .input-group-btn > .btn {
+    .input-group-sm > .input-group-btn > .btn,
+    .input-group > .form-control,
+    .form-control {
         font-size: 20px;
         height: 50px;
     }
