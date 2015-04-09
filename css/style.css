@@ -178,7 +178,8 @@ tr.collapse.in {
 
 #stats,
 #equipment,
-#controls {
+#controls,
+#notes_box{
     margin-bottom: 10px;
 }
 
@@ -191,6 +192,11 @@ tr.collapse.in {
     white-space: nowrap;
     vertical-align: middle;
     display: table-cell;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
 }
 
 @media (max-width: 991px) {

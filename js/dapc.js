@@ -602,6 +602,7 @@ function upload_me(input_json) {
         $("#mana_max").prop("disabled",true);
         $("#mana_current").prop("disabled",true);
     }
+    $("#notes").val(input_json["notes"])
 }
 
 // Save state to file (json)
@@ -610,7 +611,7 @@ $("#save").on("click", function() {
     var all_checkbox = $("#body_container").find('input[type=checkbox]');
     var all_select = $("#body_container").find('select');
     var all_spell = $("#spell_modal").find("input[type=checkbox]");
-    var output_json = {"text": {}, "checkbox": {}, "select": {}, "spell_check": {}}
+    var output_json = {"text": {}, "checkbox": {}, "select": {}, "spell_check": {}, "notes": ""}
     all_input.each(function(idx, v) {
         output_json["text"][v.id] = v.value;
     });
@@ -625,6 +626,7 @@ $("#save").on("click", function() {
     all_spell.each(function(idx,v) {
         output_json["spell_check"][v.id] = v.checked;
     });
+    output_json["notes"]=$("#notes").val();
     save_me(output_json);
 });
 
@@ -662,6 +664,7 @@ function clear_all() {
     $("#mana_max").prop("disabled",false);
     $("#mana_current").prop("disabled",false);
     $("#add_spell").removeClass("disabled");
+    $("#notes").val("");
     update_spells([]);
 }
 

@@ -269,5 +269,6 @@
         "spell_arcane_bolt": false,
         "spell_mana_drain": false,
         "spell_spell_shield": false
-    }
+    },
+    "notes": "A ranger with a bow!"
 }

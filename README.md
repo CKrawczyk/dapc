@@ -5,6 +5,7 @@ Dragon Age Table Top RPG Character Sheet written in HTML/JS.
 # Features
 
 + All the information you need to play the Dragon Age Table Top RPG on one page
++ Keep track of custom notes
 + Presented in a format that adjusts for any size screen (including phones and tablets)
 + Primary stats automatically marked based on class
 + Turn on edit mode to create or level up your character, turn it off to limit edits to the values that change during normal game play
