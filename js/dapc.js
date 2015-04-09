@@ -629,7 +629,7 @@ $("#save").on("click", function() {
 });
 
 function save_me(output_json) {
-    var json = JSON.stringify(output_json);
+    var json = JSON.stringify(output_json, null, '    ');
     var blob = new Blob([json], {type: "application/json"});
     var url = URL.createObjectURL(blob);
     var save_link = $("#file_save");

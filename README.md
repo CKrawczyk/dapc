@@ -12,3 +12,4 @@ Dragon Age Table Top RPG Character Sheet written in HTML/JS.
 + Dynamically add spells to you chracter sheet including full text discriptions for each spell (currently limited to spells from Set 1)
 + A "cast" button for each spell that automatically deducts mana and shows if a spell can be cast
 + The ability to save/load your character sheet locally in a human readable .json format
++ Example save file included "Alice_save.json"
