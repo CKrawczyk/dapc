@@ -176,6 +176,12 @@ tr.collapse.in {
     border-top: none;
 }
 
+.tree > tbody > tr.no-bot-line > td,
+.table > tbody > tr.no-bot-line > td {
+    border-bottom: none;
+    border-top: none;
+}
+
 #stats,
 #equipment,
 #controls,
@@ -197,6 +203,14 @@ tr.collapse.in {
 textarea {
     width: 100%;
     resize: vertical;
+}
+
+.stat-circle {
+    border-radius: 50%;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
 }
 
 @media (max-width: 991px) {

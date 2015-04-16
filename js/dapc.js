@@ -46,7 +46,7 @@ function make_skill_row1(skill_name) {
     var input_group = $("<div></div>").addClass("input-group input-group-sm").appendTo(div2);
     var span2 = $("<span></span>").addClass("input-group-addon").appendTo(input_group);
     var check_box = $("<input>").attr("type", "checkbox").attr("id",lower_name+"_prime").prop("disabled", true).appendTo(span2);
-    var input = $("<input>").addClass("form-control edit-lock is-int").attr("id",lower_name+"_value").attr("type", "text").appendTo(input_group);
+    var input = $("<input>").addClass("form-control edit-lock is-int").attr("id",lower_name+"_value").attr("type","text").appendTo(input_group);
     
     return tr
 }
@@ -129,9 +129,9 @@ function weapon_row(idx) {
 
     var range = $("<div></div>").addClass("col-xs-3 no-margin-left").appendTo(row);
     var input_group3 = $("<div></div>").addClass("input-group input-group-sm").appendTo(range);
-    var input4 = $("<input>").attr("type","text").attr("id","range_s_"+pad(idx)).addClass("form-control").appendTo(input_group3);
+    var input4 = $("<input>").attr("type","text").attr("id","range_s_"+pad(idx)).addClass("form-control is-int").appendTo(input_group3);
     var span2 = $("<span></span>").addClass("input-group-btn").css("width","0px").appendTo(input_group3);
-    var input5 = $("<input>").attr("type","text").attr("id","range_l_"+pad(idx)).addClass("form-control").appendTo(input_group3);
+    var input5 = $("<input>").attr("type","text").attr("id","range_l_"+pad(idx)).addClass("form-control is-int").appendTo(input_group3);
 
     return row;
 }
@@ -602,7 +602,7 @@ function upload_me(input_json) {
         $("#mana_max").prop("disabled",true);
         $("#mana_current").prop("disabled",true);
     }
-    $("#notes").val(input_json["notes"])
+    $("#notes").val(input_json["notes"]);
 }
 
 // Save state to file (json)
