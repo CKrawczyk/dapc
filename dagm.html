@@ -20,21 +20,33 @@
     <div class="container" id="body_container">
       <div class="row">
 
+        <div class="col-xs-8">
+          <div class="box top-buffer" id="init_order">
+          </div>
+        </div>
         
         <div class="col-xs-4">
-          <div class="box top-buffer" id="spells">
+          <div class="box top-buffer" id="players">
             <div class="row">
+              <div class="col-xs-12 title">
+                Players
+              </div>
               <div class="col-xs-12">
-                <table class="tree" id="overview_tree" align="right">
+                <table class="tree" id="overview_tree_palyer" align="right">
                   <thead>
                     <tr>
                       <th class="col-xs-3">Name</th>
-                      <th class="col-xs-5"></th>
+                      <th class="col-xs-1">Def.</th>
+                      <th class="col-xs-1">Arm.</th>
+                      <th class="col-xs-1">Sp.</th>
                       <th class="col-xs-2">Init.</th>
-                      <th class="col-xs-2 no-margin"><button class="btn btn-default btn-xs" type="button" id="add_player" style="width:100%">±</button></th>
+                      <th class="col-xs-4 no-margin">
+                        <input type="file" multiple id="player_upload" style="display:none;">
+                        <button class="btn btn-default btn-xs" type="button" id="add_player" style="width:100%">+</button>
+                      </th>
                     </tr>
                   </thead>
-                  <tbody id="overview_body">
+                  <tbody id="overview_body_player">
                     
                   </tbody>
                 </table>
@@ -42,11 +54,59 @@
             </div>
           </div>
 
+          <div class="box top-buffer" id="foes">
+            <div class="row">
+              <div class="col-xs-12 title">
+                Foes
+              </div>
+              <div class="col-xs-12">
+                <table class="tree" id="overview_tree_foe" align="right">
+                  <thead>
+                    <tr>
+                      <th class="col-xs-3">Name</th>
+                      <th class="col-xs-1">Def.</th>
+                      <th class="col-xs-1">Arm.</th>
+                      <th class="col-xs-1">Sp.</th>
+                      <th class="col-xs-2">Init.</th>
+                      <th class="col-xs-4 no-margin">
+                        <input type="file" multiple id="foe_upload" style="display:none;">
+                        <button class="btn btn-default btn-xs" type="button" id="add_foe" style="width:100%">+</button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview_body_foe">
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
           
         </div>
       </div>
       
     </div> <!--container-->
+
+    <div id="mouseover" class="hidden">
+    </div>
+
+    <div id="popover_health_mana_body" style="display: none;">
+      <div class="row">
+        <div class="col-xs-12">
+          <input type="text" class="form-control is-int" id="add_remove_value" style="width:100%">
+        </div>
+        <div class="col-xs-12 top-buffer">
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button class="btn btn-default" type="button" id="add">+</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-default" type="button" id="remove">-</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <script src="./js/dagm.js"></script>
   </body>

@@ -182,6 +182,11 @@ tr.collapse.in {
     border-top: none;
 }
 
+.tree > tbody > tr.top-line > td,
+.table > tbody > tr.top-line > td {
+    border-top: 3px solid #a5a5a5;
+}
+
 #stats,
 #equipment,
 #controls,
@@ -205,12 +210,37 @@ textarea {
     resize: vertical;
 }
 
-.stat-circle {
-    border-radius: 50%;
+.stat-circle {  
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
     background: #fff;
     width: 40px;
     height: 40px;
     margin: 2px;
+    padding: 1px;
+}
+
+#mouseover {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    pointer-events: none;
+    margin: 0;
+    background: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #aaa;
+}
+
+#mouseover.hidden {
+    display: none;
 }
 
 @media (max-width: 991px) {

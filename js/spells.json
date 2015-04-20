@@ -219,5 +219,18 @@
         "type": "Attack", 
         "cast time": "Major Action", 
         "half damage": "1d6"
+    },
+    "spell_mind_blast": {
+        "name": "Mind Blast",
+        "tn": "12", 
+        "full damage": "All knocked prone and can't take a major action next turn in 2 yard radius. Prepared actions lost.",
+        "school": "Sprit", 
+        "mp": "3", 
+        "AoE": "None", 
+        "test": "Strength (Might)", 
+        "range": "50 yards",
+        "type": "Attack",
+        "cast time": "Major Action", 
+        "half damage": "Just knocked prone. Prepared actions lost."
     }
 }

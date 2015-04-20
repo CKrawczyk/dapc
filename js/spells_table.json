@@ -187,15 +187,26 @@
             },
             "Arcane Bolt": {
                 "requirement": "none",
-                  "tn": "10", 
-                  "full damage": "2d6+Dragon Die", 
-                  "mp": "2", 
-                  "AoE": "None", 
-                  "test": "Dexterity (Acrobatics)", 
-                  "range": "30 yards", 
-                  "cast time": "Major Action", 
-                  "half damage": "1d6"
-              }   
+                "tn": "10", 
+                "full damage": "2d6+Dragon Die", 
+                "mp": "2", 
+                "AoE": "None", 
+                "test": "Dexterity (Acrobatics)", 
+                "range": "30 yards", 
+                "cast time": "Major Action", 
+                "half damage": "1d6"
+            },
+            "Mind Blast": {
+                "requirement": "none",
+                "tn": "12", 
+                "full damage": "All knocked prone and can't take a major action next turn in 2 yard radius. Prepared actions lost.", 
+                "mp": "3", 
+                "AoE": "None", 
+                "test": "Strength (Might)", 
+                "range": "50 yards", 
+                "cast time": "Major Action", 
+                "half damage": "Just knocked prone. Prepared actions lost."
+            }
         },
         "Utility": {
             "Mana Drain": {
