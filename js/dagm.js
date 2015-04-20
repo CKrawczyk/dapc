@@ -11,7 +11,7 @@ $.getJSON("./js/spells.json", function(data) {
 function add_player(data) {
     var body=$("#overview_body_player")
     var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
-    var td1=$("<td></td>").html(data["text"]["name"]).appendTo(tr_name);
+    var td1=$("<td></td>").html("<b>"+data["text"]["name"]+"</b>").appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["defense"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["armor"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["speed"]).appendTo(tr_name);
@@ -48,7 +48,7 @@ function add_player(data) {
 function add_foe(data) {
     var body=$("#overview_body_foe")
     var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
-    var td1=$("<td></td>").html(data["text"]["name"]).appendTo(tr_name);
+    var td1=$("<td></td>").html("<b>"+data["text"]["name"]+"</b>").appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["defense"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["armor"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["speed"]).appendTo(tr_name);
