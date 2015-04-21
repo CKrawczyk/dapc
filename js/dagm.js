@@ -11,7 +11,9 @@ $.getJSON("./js/spells.json", function(data) {
 function add_player(data) {
     var body=$("#overview_body_player")
     var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
-    var td1=$("<td></td>").html("<b>"+data["text"]["name"]+"</b>").appendTo(tr_name);
+    var td1=$("<td></td>").appendTo(tr_name);
+    var bold=$("<b></b>").appendTo(td1);
+    var name_span=$("<span></span>").addClass("name").html(data["text"]["name"]).appendTo(bold);
     var td2=$("<td></td>").addClass("title").html(data["text"]["defense"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["armor"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["speed"]).appendTo(tr_name);
@@ -45,10 +47,12 @@ function add_player(data) {
     });
 }
 
-function add_foe(data) {
+function add_foe(data,number) {
     var body=$("#overview_body_foe")
     var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
-    var td1=$("<td></td>").html("<b>"+data["text"]["name"]+"</b>").appendTo(tr_name);
+    var td1=$("<td></td>").appendTo(tr_name);
+    var bold=$("<b></b>").appendTo(td1);
+    var name_span=$("<span></span>").addClass("name").html(data["text"]["name"]).appendTo(bold);
     var td2=$("<td></td>").addClass("title").html(data["text"]["defense"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["armor"]).appendTo(tr_name);
     var td2=$("<td></td>").addClass("title").html(data["text"]["speed"]).appendTo(tr_name);
@@ -137,30 +141,61 @@ $("#player_upload").on("change", function() {
     });
 });
 
-$("#add_foe").on("click", function() {
+//$("#add_foe").on("click", function() {
+//    $("#foe_upload").click();
+//});
+
+$("#upload_foe").on("click", function() {
     $("#foe_upload").click();
-})
+});
 
 $("#foe_upload").on("change", function() {
     $.each(this.files, function(idx,file) {
         if (file) {
             var reader = new FileReader();
+            var foe_number = $("#add_foe_value").val();
             reader.onloadend = function(evt) {
                 var dataText = evt.target.result;
                 var input_json = JSON.parse(dataText);
-                add_foe(input_json);
+                if (foe_number>1) {
+                    var original_name = input_json["text"]["name"]               
+                    for (var f=0; f<foe_number; f++) {
+                        input_json["text"]["name"]=original_name+" "+(f+1);
+                        add_foe(input_json);
+                    }
+                } else {
+                    add_foe(input_json);
+                }
             };
             reader.readAsText(file);
         };
     });
+    $("#add_foe_value").val(1);
 });
 
 function remove_player(el) {
     var me=$(el);
-    var i=me.parent().parent().attr("class").split(" ")[0].split("-")[1];
+    var me_class=me.parent().parent().attr("class").split(" ")
+    var i=me_class[0].split("-")[1];
     $(".treegrid-parent-"+i).remove();
     $(".stat-parent-"+i).remove();
     $(".treegrid-"+i).remove();
+    if (init_list.length>0) {
+        var value=init_list[0];
+        $(".treegrid-"+value[2]).removeClass("active-row");
+        $(".treegrid-parent-"+value[2]).removeClass("active-row");
+        $(".stat-parent-"+value[2]).removeClass("active-row");
+        
+        var idx_remove="";
+        $.each(init_list, function(idx,value2) {
+            if (value2[2]==i) {
+                idx_remove=idx;
+            }
+        });
+        init_list.splice(idx_remove,1);
+        $("#init_body").html("");
+        add_init(init_list);
+    }
 };
 
 function stat_span(data) {
@@ -287,6 +322,7 @@ function health_grab(data,i,p) {
                 button.popover('toggle');
             });
         });
+    var td4=$("<td></td>").attr("colspan","3").appendTo(tr_e);
     return tr_e;
 }
 
@@ -340,6 +376,7 @@ function mana_grab(data,i,p) {
                 button.popover('toggle');
             });
         });
+    var td4=$("<td></td>").attr("colspan","3").appendTo(tr_e);
     return tr_e;
 }
 
@@ -394,3 +431,120 @@ function grap_spells(data,i,p,body) {
         });
     });
 }
+
+var init_list = [];
+$("#add_all").on("click", function() {
+    if (init_list.length>0) {
+        var value=init_list[0];
+        $(".treegrid-"+value[2]).removeClass("active-row");
+        $(".treegrid-parent-"+value[2]).removeClass("active-row");
+        $(".stat-parent-"+value[2]).removeClass("active-row");
+        $(".init").each(function(idx, i) {
+            var init=i.value;
+            $(i).val("");
+            if (init) {
+                var i_parent = $(i).parent().parent()
+                var name = i_parent.find(".name").html();
+                var parent_class = i_parent.attr("class").split(" ")[0];
+                var parent = parent_class.split("-")[1];
+                var j=0;
+                $.each(init_list, function(jdx,value) {
+                    j=jdx;
+                    return init<value[1];
+                });
+                init_list.splice(j,0,[name,init,parent]);
+            }
+        });
+        $("#init_body").html("");
+        add_init(init_list);
+    } else {
+        $(".init").each(function(idx, i) {
+            var init=i.value;
+            $(i).val("");
+            if (init) {
+                var i_parent = $(i).parent().parent()
+                var name = i_parent.find(".name").html();
+                var parent_class = i_parent.attr("class").split(" ")[0];
+                var parent = parent_class.split("-")[1];
+                init_list.push([name,init,parent]);
+            }
+        });
+        init_list.sort(function(a,b) {return b[1]-a[1]})
+        add_init(init_list);
+    }
+});
+
+function seize_init(me) {
+    var value=init_list[0];
+    $(".treegrid-"+value[2]).removeClass("active-row");
+    $(".treegrid-parent-"+value[2]).removeClass("active-row");
+    $(".stat-parent-"+value[2]).removeClass("active-row");
+
+    var me_p_p=$(me).parent().parent();
+    console.log(me_p_p.attr("class").split(" ")[1]);
+    var current_val=[me_p_p.attr("name"),me_p_p.attr("init"),me_p_p.attr("class").split(" ")[1].split("-")[2]];
+    var current_idx=init_list.indexOf(current_val);
+    var current_inits=init_list.map(function(val) {
+        return val[1];
+    });
+    var current_max=Math.max.apply(Math,current_inits);
+    var current_max_index=current_inits.indexOf(current_max+"");
+    var cv=init_list.splice(current_idx,1)[0];
+    cv[1]=current_max+0.01+"";
+    init_list.splice(current_max_index-1,0,cv);
+    $("#init_body").html("");
+    add_init(init_list);
+}
+
+function remove_init(el) {
+    var value=init_list[0];
+    $(".treegrid-"+value[2]).removeClass("active-row");
+    $(".treegrid-parent-"+value[2]).removeClass("active-row");
+    $(".stat-parent-"+value[2]).removeClass("active-row");
+    var me=$(el);
+    var me_class=me.parent().parent().attr("class").split(" ")
+    var parent=me_class[1].split("-")[2];
+    var i=me_class[0].split("-")[2];
+    $(".treegrid-parent-init"+i).remove();
+    $(".treegrid-init-"+i).remove();
+    var idx_remove="";
+    $.each(init_list, function(idx,value2) {
+        if (value2[2]==parent) {
+            idx_remove=idx;
+        }
+    });
+    init_list.splice(idx_remove,1);
+    $("#init_body").html("");
+    add_init(init_list);
+};
+
+function add_init(init_list) {
+    $.each(init_list, function(idx, value) {
+        var tr=$("<tr></tr>").addClass("treegrid-init-"+idx+" "+"stat-parent-"+value[2]).attr("init",value[1]).attr("name",value[0]).appendTo("#init_body");
+        if (idx==0) {
+            $(".treegrid-"+value[2]).addClass("active-row");
+            $(".treegrid-parent-"+value[2]).addClass("active-row");
+            $(".stat-parent-"+value[2]).addClass("active-row");
+        }
+        var td1=$("<td></td>").html(value[0]).appendTo(tr);
+        var td2=$("<td></td>").appendTo(tr)
+        var up_arrow=$('<span onclick="seize_init(this)"></span>').addClass("glyphicon glyphicon-arrow-up").appendTo(td2);
+        var td3=$("<td></td>").appendTo(tr).html('<a onclick="remove_init(this);" class="close close-player">&times;</a>');
+    });
+    $('#initiative_tree').treegrid({
+        'initialState': 'collapsed'
+    });
+}
+
+$("#advance").on("click", function() {
+    var value=init_list[0];
+    $(".treegrid-"+value[2]).removeClass("active-row");
+    $(".treegrid-parent-"+value[2]).removeClass("active-row");
+    $(".stat-parent-"+value[2]).removeClass("active-row");
+    if (init_list.length>0) {
+        var tmp = init_list.shift();
+        init_list.push(tmp);
+        $("#init_body").html("");
+        add_init(init_list);
+    }
+});

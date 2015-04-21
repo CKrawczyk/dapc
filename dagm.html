@@ -20,8 +20,31 @@
     <div class="container" id="body_container">
       <div class="row">
 
-        <div class="col-xs-7">
+        <div class="col-xs-2">
           <div class="box top-buffer" id="init_order">
+            <div class="row">
+              <div class="col-xs-12 title">
+                Initiative Tracker
+              </div>
+              <div class="col-xs-6 no-margin-right">
+                <button class="btn btn-default btn-xs" type="button" id="add_all" style="width:100%;">Add all</button>
+              </div>
+              <div class="col-xs-6 no-margin-left">
+                <button class="btn btn-default btn-xs" type="button" id="advance" style="width:100%;">Advance</button>
+              </div>
+              <div class="col-xs-12">
+                <table class="tree" id="initiative_tree" align="right">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody id="init_body">
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -53,7 +76,9 @@
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="col-xs-5">
           <div class="box top-buffer" id="foes">
             <div class="row">
               <div class="col-xs-12 title">
@@ -70,7 +95,7 @@
                       <th class="col-xs-2">Init.</th>
                       <th class="col-xs-3 no-margin">
                         <input type="file" multiple id="foe_upload" style="display:none;">
-                        <button class="btn btn-default btn-xs" type="button" id="add_foe" style="width:100%">+</button>
+                        <button class="btn btn-default btn-xs" type="button" id="add_foe" data-toggle="modal" data-target="#foe_modal" style="width:100%">+</button>
                       </th>
                     </tr>
                   </thead>
@@ -103,6 +128,26 @@
             <div class="btn-group" role="group">
               <button class="btn btn-default" type="button" id="remove">-</button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="foe_modal" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">How many would you like to add?</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="text" class="form-control is-int" id="add_foe_value" style="width:100%" value="1">
+              </div>
+            </div>
+           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="upload_foe">Upload</button>
           </div>
         </div>
       </div>

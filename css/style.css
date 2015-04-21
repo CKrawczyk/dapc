@@ -243,6 +243,10 @@ textarea {
     display: none;
 }
 
+.active-row {
+    background-color: rgba(250,250,250,.85);
+}
+
 @media (max-width: 991px) {
     #body_container {
         width: auto;
