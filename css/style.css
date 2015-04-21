@@ -247,6 +247,15 @@ textarea {
     background-color: rgba(250,250,250,.85);
 }
 
+.glyphicon-arrow-up {
+    opacity: 0.2;
+}
+
+.glyphicon-arrow-up:focus,
+.glyphicon-arrow-up:hover {
+    opacity: 0.5;
+}
+
 @media (max-width: 991px) {
     #body_container {
         width: auto;
