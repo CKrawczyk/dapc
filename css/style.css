@@ -247,6 +247,10 @@ textarea {
     background-color: rgba(250,250,250,.85);
 }
 
+.hover-row {
+    background-color: rgba(225,225,225,.85);
+}
+
 .glyphicon-arrow-up {
     opacity: 0.2;
 }

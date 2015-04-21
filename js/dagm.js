@@ -10,7 +10,9 @@ $.getJSON("./js/spells.json", function(data) {
 
 function add_player(data) {
     var body=$("#overview_body_player")
-    var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
+    var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").appendTo(tr_name);
     var bold=$("<b></b>").appendTo(td1);
     var name_span=$("<span></span>").addClass("name").html(data["text"]["name"]).appendTo(bold);
@@ -22,7 +24,9 @@ function add_player(data) {
     var td4=$("<td></td>").appendTo(tr_name).html('<a onclick="remove_player(this);" class="close close-player">&times;</a>');
     p=i;
     i+=1;
-    var tr_stat=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body);
+    var tr_stat=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td2=$("<td></td>").attr("colspan","6").appendTo(tr_stat);
     var com=stat_span(data).appendTo(td2);
     i+=1;
@@ -49,7 +53,9 @@ function add_player(data) {
 
 function add_foe(data,number) {
     var body=$("#overview_body_foe")
-    var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body);
+    var tr_name=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line top-line").appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").appendTo(tr_name);
     var bold=$("<b></b>").appendTo(td1);
     var name_span=$("<span></span>").addClass("name").html(data["text"]["name"]).appendTo(bold);
@@ -67,7 +73,9 @@ function add_foe(data,number) {
         mana_grab(data,i,p).appendTo(body);
         i+=1;
     }
-    var tr_stat=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p+" no-bot-line").appendTo(body);
+    var tr_stat=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p+" no-bot-line").appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td2=$("<td></td>").attr("colspan","6").appendTo(tr_stat);
     var com=stat_span(data).appendTo(td2);
     i+=1;
@@ -228,21 +236,27 @@ function stat_span(data) {
 }
 
 function grab(data,i,p,label,key,type) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html(label).appendTo(tr_e);
     var td2=$("<td></td>").attr("colspan","5").html(data[type][key]).appendTo(tr_e);
     return tr_e;
 }
 
 function note_grab(data,i,p,label,key) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html(label).appendTo(tr_e);
     var td2=$("<td></td>").attr("colspan","5").html(data[key].replace(/(?:\r\n|\r|\n)/g, '<br /><br />')).appendTo(tr_e);
     return tr_e;
 }
 
 function list_grab(data,i,p,label,key,N) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html(label).appendTo(tr_e);
     var lst=[]
     for (var i=0; i<N; i++) {
@@ -257,7 +271,9 @@ function list_grab(data,i,p,label,key,N) {
 }
 
 function talent_grab(data,i,p) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html("Talents").appendTo(tr_e);
     var tal=[]
     $.each(talent_names, function(idx, value) {
@@ -273,7 +289,9 @@ function talent_grab(data,i,p) {
 }
 
 function health_grab(data,i,p) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line stat-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p+" no-bot-line")
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html("Health").appendTo(tr_e);
     var health_html=data["text"]["health_current"]+"/"+data["text"]["health_max"];
     var td2=$("<td></td>").addClass("health-counter").html(health_html).appendTo(tr_e);
@@ -327,7 +345,9 @@ function health_grab(data,i,p) {
 }
 
 function mana_grab(data,i,p) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" no-bot-line stat-parent-"+p);
+    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p+" no-bot-line")
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html("Mana").appendTo(tr_e);
     var health_html=data["text"]["mana_current"]+"/"+data["text"]["mana_max"];
     var td2=$("<td></td>").addClass("mana-counter").html(health_html).appendTo(tr_e);
@@ -383,14 +403,18 @@ function mana_grab(data,i,p) {
 function grab_weapons(data,i,p,body) {
     var li = 0;
     var lp = i;
-    var tr_e1=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body);
+    var tr_e1=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").attr("colspan","2").html("Weapon").appendTo(tr_e1);
     var td2=$("<td></td>").html("Attack").appendTo(tr_e1);
     var td3=$("<td></td>").attr("colspan","2").html("Damage").appendTo(tr_e1);
     var td4=$("<td></td>").html("Range").appendTo(tr_e1);
     for (var j=0; j<6; j++) {
         if (data["text"]["weapon_"+pad(j+1)]) {
-            var tr_e2=$("<tr></tr>").addClass("treegrid-"+lp+"-"+li+" treegrid-parent-"+lp+" stat-parent-"+p).appendTo(body);
+            var tr_e2=$("<tr></tr>").addClass("treegrid-"+lp+"-"+li+" stat-parent-"+p+" treegrid-parent-"+lp).appendTo(body)
+                .on("mouseover", row_mouse_over)
+                .on("mouseout", row_mouse_out);
             li+=1;
             var td1=$("<td></td>").attr("colspan","2").html(data["text"]["weapon_"+pad(j+1)]).appendTo(tr_e2);
             var td2=$("<td></td>").html(data["text"]["attack_"+pad(j+1)]).appendTo(tr_e2);
@@ -403,7 +427,9 @@ function grab_weapons(data,i,p,body) {
 function grap_spells(data,i,p,body) {
     var li=0;
     var lp=i;
-    var tr_e1=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body);
+    var tr_e1=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body)
+        .on("mouseover", row_mouse_over)
+        .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").attr("colspan","4").html("spell").appendTo(tr_e1);
     var td2=$("<td></td>").html("MP").appendTo(tr_e1);
     var td3=$("<td></td>").html("TN").appendTo(tr_e1);
@@ -416,7 +442,9 @@ function grap_spells(data,i,p,body) {
     });
     $.each(spell_list, function(index1, value1) {
         var this_spell = all_spells[value1];
-        var tr_e2=$("<tr></tr>").addClass("treegrid-"+i+"-"+li+" treegrid-parent-"+i+" stat-parent-"+p).appendTo(body);
+        var tr_e2=$("<tr></tr>").addClass("treegrid-"+i+"-"+li+" stat-parent-"+p+" treegrid-parent-"+i).appendTo(body)
+            .on("mouseover", row_mouse_over)
+            .on("mouseout", row_mouse_out);
         var td1=$("<td></td>").attr("colspan","4").html(this_spell["name"]).appendTo(tr_e2);
         var td2=$("<td></td>").addClass("title").html(this_spell["mp"]).appendTo(tr_e2);
         var td3=$("<td></td>").addClass("title").html(this_spell["tn"]).appendTo(tr_e2);
@@ -424,7 +452,9 @@ function grap_spells(data,i,p,body) {
         lp=i+"-"+li
         li+=1;
         $.each(['school', 'type', 'cast time', 'range', 'test', 'full damage', 'half damage', 'AoE'], function(index2, value2) {
-            var tr_e3=$("<tr></tr>").addClass("treegrid-"+i+"-"+li+" treegrid-parent-"+lp+" stat-parent-"+p).appendTo(body);
+            var tr_e3=$("<tr></tr>").addClass("treegrid-"+i+"-"+li+" stat-parent-"+p+" treegrid-parent-"+lp).appendTo(body)
+                .on("mouseover", row_mouse_over)
+                .on("mouseout", row_mouse_out);
             var td1=$("<td></td>").attr("colspan","2").html(value2).appendTo(tr_e3);
             var td2=$("<td></td>").attr("colspan","4").html(this_spell[value2]).appendTo(tr_e3);
             li+=1;
@@ -520,7 +550,9 @@ function remove_init(el) {
 
 function add_init(init_list) {
     $.each(init_list, function(idx, value) {
-        var tr=$("<tr></tr>").addClass("treegrid-init-"+idx+" "+"stat-parent-"+value[2]).attr("init",value[1]).attr("name",value[0]).appendTo("#init_body");
+        var tr=$("<tr></tr>").addClass("treegrid-init-"+idx+" "+"stat-parent-"+value[2]).attr("init",value[1]).attr("name",value[0]).appendTo("#init_body")
+            .on("mouseover", row_mouse_over)
+            .on("mouseout", row_mouse_out);
         if (idx==0) {
             $(".treegrid-"+value[2]).addClass("active-row");
             $(".treegrid-parent-"+value[2]).addClass("active-row");
@@ -548,3 +580,41 @@ $("#advance").on("click", function() {
         add_init(init_list);
     }
 });
+
+function row_mouse_over(event) {
+    var me = $(event.currentTarget);
+    //me.addClass("hover-row");
+    var c = me.attr("class");
+    var i=""
+    if (c.indexOf("stat-parent-")>-1) {
+        i = c.split(" ")[1].split("-")[2];
+    } else if (c.indexOf("treegrid-parent-")>-1) {
+        i = c.split(" ")[1].split("-")[2];
+    } else {
+        i = c.split(" ")[0].split("-")[1];
+    }
+    if (c.indexOf("active-row")===-1) {
+        $("."+"treegrid-"+i).addClass("hover-row");
+        $("."+"treegrid-parent-"+i).addClass("hover-row");
+        $("."+"stat-parent-"+i).addClass("hover-row");
+    }
+}
+
+function row_mouse_out(event) {
+    var me = $(event.currentTarget);
+    //me.removeClass("hover-row");
+    var c = me.attr("class");
+    var i="";
+    if (c.indexOf("stat-parent-")>-1) {
+        i = c.split(" ")[1].split("-")[2];
+    } else if (c.indexOf("treegrid-parent-")>-1) {
+        i = c.split(" ")[1].split("-")[2];
+    } else {
+        i = c.split(" ")[0].split("-")[1];
+    }
+    if (c.indexOf("active-row")===-1) {
+        $("."+"treegrid-"+i).removeClass("hover-row");
+        $("."+"treegrid-parent-"+i).removeClass("hover-row");
+        $("."+"stat-parent-"+i).removeClass("hover-row");
+    }
+}
