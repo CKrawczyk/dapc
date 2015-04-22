@@ -249,7 +249,7 @@ function note_grab(data,i,p,label,key) {
         .on("mouseover", row_mouse_over)
         .on("mouseout", row_mouse_out);
     var td1=$("<td></td>").html(label).appendTo(tr_e);
-    var td2=$("<td></td>").attr("colspan","5").html(data[key].replace(/(?:\r\n|\r|\n)/g, '<br /><br />')).appendTo(tr_e);
+    var td2=$("<td></td>").attr("colspan","5").html(data[key].replace(/(?:\r\n|\r|\n)/g, '<br />')).appendTo(tr_e);
     return tr_e;
 }
 
@@ -549,18 +549,27 @@ function remove_init(el) {
 };
 
 function add_init(init_list) {
+    var current_inits=init_list.map(function(val) {
+        return val[1];
+    });
+    var current_max=Math.max.apply(Math,current_inits);
+    var current_max_index=current_inits.indexOf(current_max+"");
     $.each(init_list, function(idx, value) {
         var tr=$("<tr></tr>").addClass("treegrid-init-"+idx+" "+"stat-parent-"+value[2]).attr("init",value[1]).attr("name",value[0]).appendTo("#init_body")
             .on("mouseover", row_mouse_over)
             .on("mouseout", row_mouse_out);
-        if (idx==0) {
+        if (idx===0) {
             $(".treegrid-"+value[2]).addClass("active-row");
             $(".treegrid-parent-"+value[2]).addClass("active-row");
             $(".stat-parent-"+value[2]).addClass("active-row");
         }
         var td1=$("<td></td>").html(value[0]).appendTo(tr);
         var td2=$("<td></td>").appendTo(tr)
-        var up_arrow=$('<span onclick="seize_init(this)"></span>').addClass("glyphicon glyphicon-arrow-up").appendTo(td2);
+        if (idx===current_max_index) {
+            var star=$('<span></span>').addClass("glyphicon glyphicon-star").appendTo(td2)
+        } else {
+            var up_arrow=$('<span onclick="seize_init(this)"></span>').addClass("glyphicon glyphicon-arrow-up").appendTo(td2);
+        }
         var td3=$("<td></td>").appendTo(tr).html('<a onclick="remove_init(this);" class="close close-player">&times;</a>');
     });
     $('#initiative_tree').treegrid({

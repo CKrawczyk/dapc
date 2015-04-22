@@ -38,6 +38,7 @@ h4 {
     background-image: url("../images/RedDragon.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    min-height: 950px;
 }
 
 .input-group-addon {
@@ -251,12 +252,12 @@ textarea {
     background-color: rgba(225,225,225,.85);
 }
 
-.glyphicon-arrow-up {
+.glyphicon {
     opacity: 0.2;
 }
 
-.glyphicon-arrow-up:focus,
-.glyphicon-arrow-up:hover {
+.glyphicon:focus,
+.glyphicon:hover {
     opacity: 0.5;
 }
 
