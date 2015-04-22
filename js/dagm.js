@@ -497,7 +497,9 @@ $("#add_all").on("click", function() {
                 var L=init_list.length;
                 if (j_insert>L) {
                     j_insert-=L;
-                }
+                } else if (j_insert<0) {
+                    j_insert+=L;
+                };
                 init_list.splice(j_insert,0,[name,init,parent]);
             }
         });
