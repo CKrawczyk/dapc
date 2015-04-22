@@ -149,9 +149,14 @@ $("#player_upload").on("change", function() {
     });
 });
 
-//$("#add_foe").on("click", function() {
-//    $("#foe_upload").click();
-//});
+$("#add_foe").on("click", function() {
+    $("#add_foe_value").val(1);
+    if ($("#foe_multi").prop("checked")) {
+        $("#foe_modal").modal("show");
+    } else {
+        $("#foe_upload").click();
+    }
+});
 
 $("#upload_foe").on("click", function() {
     $("#foe_upload").click();

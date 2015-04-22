@@ -252,13 +252,25 @@ textarea {
     background-color: rgba(225,225,225,.85);
 }
 
-.glyphicon {
+.glyphicon-star,
+.glyphicon-arrow-up{
     opacity: 0.2;
 }
 
-.glyphicon:focus,
-.glyphicon:hover {
+.glyphicon-star:focus,
+.glyphicon-arrow-up:focus,
+.glyphicon-star:hover,
+.glyphicon-arrow-up:hover {
     opacity: 0.5;
+}
+
+.input-group-xs>.form-control,
+.input-group-xs>.input-group-addon,
+.input-group-xs>.input-group-btn>.btn {
+    height: 22px;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 @media (max-width: 991px) {

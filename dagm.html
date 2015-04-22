@@ -98,7 +98,13 @@
                       <th class="col-xs-2 no-margin">Init.</th>
                       <th class="col-xs-3 no-margin">
                         <input type="file" multiple id="foe_upload" style="display:none;">
-                        <button class="btn btn-default btn-xs" type="button" id="add_foe" data-toggle="modal" data-target="#foe_modal" style="width:100%">+</button>
+                        <div class="input-group input-group-xs">
+                          <span class="input-group-addon">
+                            Multi. <input type="checkbox" id="foe_multi">
+                          </span>
+                          <!--<button class="btn btn-default btn-xs" type="button" id="add_foe" data-toggle="modal" data-target="#foe_modal" style="width:100%">+</button>-->
+                          <button class="btn btn-default btn-xs" type="button" id="add_foe" style="width:100%">+</button>
+                        </div>
                       </th>
                     </tr>
                   </thead>
