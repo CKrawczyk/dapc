@@ -478,16 +478,27 @@ $("#add_all").on("click", function() {
             var init=i.value;
             $(i).val("");
             if (init) {
+                var current_inits=init_list.map(function(val) {
+                    return val[1];
+                });
+                var current_max=Math.max.apply(Math,current_inits);
+                var current_max_index=current_inits.indexOf(current_max+"");
+                current_inits.sort(function(a,b) {return b-a});
                 var i_parent = $(i).parent().parent()
                 var name = i_parent.find(".name").html();
                 var parent_class = i_parent.attr("class").split(" ")[0];
                 var parent = parent_class.split("-")[1];
                 var j=0;
-                $.each(init_list, function(jdx,value) {
+                $.each(current_inits, function(jdx,value) {
                     j=jdx;
-                    return init<value[1];
+                    return init<value;
                 });
-                init_list.splice(j,0,[name,init,parent]);
+                var j_insert=j+current_max_index;
+                var L=init_list.length;
+                if (j_insert>L) {
+                    j_insert-=L;
+                }
+                init_list.splice(j_insert,0,[name,init,parent]);
             }
         });
         $("#init_body").html("");
@@ -514,19 +525,14 @@ function seize_init(me) {
     $(".treegrid-"+value[2]).removeClass("active-row");
     $(".treegrid-parent-"+value[2]).removeClass("active-row");
     $(".stat-parent-"+value[2]).removeClass("active-row");
-
-    var me_p_p=$(me).parent().parent();
-    console.log(me_p_p.attr("class").split(" ")[1]);
-    var current_val=[me_p_p.attr("name"),me_p_p.attr("init"),me_p_p.attr("class").split(" ")[1].split("-")[2]];
-    var current_idx=init_list.indexOf(current_val);
+    var cv=init_list.splice(0,1)[0];
     var current_inits=init_list.map(function(val) {
         return val[1];
     });
     var current_max=Math.max.apply(Math,current_inits);
     var current_max_index=current_inits.indexOf(current_max+"");
-    var cv=init_list.splice(current_idx,1)[0];
     cv[1]=current_max+0.01+"";
-    init_list.splice(current_max_index-1,0,cv);
+    init_list.splice(current_max_index,0,cv);
     $("#init_body").html("");
     add_init(init_list);
 }
@@ -572,7 +578,7 @@ function add_init(init_list) {
         var td2=$("<td></td>").appendTo(tr)
         if (idx===current_max_index) {
             var star=$('<span></span>').addClass("glyphicon glyphicon-star").appendTo(td2)
-        } else {
+        } else if (idx===0) {
             var up_arrow=$('<span onclick="seize_init(this)"></span>').addClass("glyphicon glyphicon-arrow-up").appendTo(td2);
         }
         var td3=$("<td></td>").appendTo(tr).html('<a onclick="remove_init(this);" class="close close-player">&times;</a>');
