@@ -31,3 +31,4 @@ Dragon Age Table Top RPG initiative tracker writeen in HTML/JS
     + Removal from tracker will keep character stats (don't have to reload players every battle)
     + Seize the initiative button included on the tracker
     + Top of the initiative order marked with a star
+    + Round number automatically tracked
