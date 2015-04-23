@@ -562,6 +562,9 @@ function remove_init(el) {
 };
 
 function add_init(init_list) {
+    if (init_list.length===0) {
+        $("#round_number").html("0");
+    }
     var current_inits=init_list.map(function(val) {
         return val[1];
     });
@@ -580,6 +583,10 @@ function add_init(init_list) {
         var td2=$("<td></td>").appendTo(tr)
         if (idx===current_max_index) {
             var star=$('<span></span>').addClass("glyphicon glyphicon-star").appendTo(td2)
+            if (idx===0) {
+                var rn=$("#round_number").html();
+                $("#round_number").html(parseInt(rn)+1);
+            }
         } else if (idx===0) {
             var up_arrow=$('<span onclick="seize_init(this)"></span>').addClass("glyphicon glyphicon-arrow-up").appendTo(td2);
         }
