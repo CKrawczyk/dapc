@@ -630,11 +630,30 @@ $("#save").on("click", function() {
     save_me(output_json);
 });
 
+var illegalRe = /[\/\?<>\\:\*\|":']/g;
+var controlRe = /[\x00-\x1f\x80-\x9f]/g;
+var reservedRe = /^\.+$/;
+var windowsReservedRe = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i;
+
+function sanitize(input, replacement) {
+    return input
+        .replace(illegalRe, replacement)
+        .replace(controlRe, replacement)
+        .replace(reservedRe, replacement)
+        .replace(windowsReservedRe, replacement)
+        .replace(" ","_");
+}
+
 function save_me(output_json) {
     var json = JSON.stringify(output_json, null, '    ');
     var blob = new Blob([json], {type: "application/json"});
     var url = URL.createObjectURL(blob);
     var save_link = $("#file_save");
+    var save_name = "save.json"
+    if (output_json['text']['name']) {
+        save_name = sanitize(output_json['text']['name'],"")+".json"
+    }
+    save_link.prop("download",save_name);
     save_link.prop("href", url);
     save_link[0].click();
 }
