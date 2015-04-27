@@ -675,5 +675,12 @@ function toggleChevron(e) {
     $(e.target).parent().parent().prev().find('.skill-arrow').toggleClass('glyphicon-chevron-right glyphicon-chevron-down')
 }
 
-$("#accordion_table").on('hidden.bs.collapse', toggleChevron)
-$("#accordion_table").on('show.bs.collapse', toggleChevron)
+$("#accordion_table").on('hidden.bs.collapse', toggleChevron);
+$("#accordion_table").on('show.bs.collapse', toggleChevron);
+
+window.addEventListener("beforeunload", function (e) {
+    var confirmationMessage = "Don't forget to save.";
+
+    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
