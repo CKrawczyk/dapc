@@ -30,21 +30,45 @@ function add_player(data) {
     var td2=$("<td></td>").attr("colspan","6").appendTo(tr_stat);
     var com=stat_span(data).appendTo(td2);
     i+=1;
-    grab(data,i,p,"Class","class","select").appendTo(body);
+    var g = grab(data,i,p,"Class","class","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Level","level","text").appendTo(body);
+    var g = grab(data,i,p,"Level","level","text");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Gender","gender","select").appendTo(body);
+    var g = grab(data,i,p,"Gender","gender","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Age","age","text").appendTo(body);
+    var g = grab(data,i,p,"Age","age","text");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Race","race","select").appendTo(body);
+    var g = grab(data,i,p,"Race","race","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    talent_grab(data,i,p).appendTo(body);
+    var g = talent_grab(data,i,p);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    list_grab(data,i,p,"Powers","class_power_",15).appendTo(body);
+    var g = list_grab(data,i,p,"Powers","class_power_",15);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    list_grab(data,i,p,"Lang.","language_",12).appendTo(body);
+    var g = list_grab(data,i,p,"Lang.","language_",12);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
     $('#overview_tree_palyer').treegrid({
         'initialState': 'collapsed'
@@ -84,30 +108,56 @@ function add_foe(data,number) {
     if (data["select"]["class"]=="Mage") {
         grap_spells(data,i,p,body);
     }
+    var g = grab(data,i,p,"Class","class","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Class","class","select").appendTo(body);
+    var g = grab(data,i,p,"Level","level","text");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Level","level","text").appendTo(body);
+    var g = grab(data,i,p,"Gender","gender","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Gender","gender","select").appendTo(body);
+    var g = grab(data,i,p,"Age","age","text");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Age","age","text").appendTo(body);
+    var g = grab(data,i,p,"Race","race","select");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    grab(data,i,p,"Race","race","select").appendTo(body);
+    var g = talent_grab(data,i,p);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    talent_grab(data,i,p).appendTo(body);
+    var g = list_grab(data,i,p,"Powers","class_power_",15);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    list_grab(data,i,p,"Powers","class_power_",15).appendTo(body);
+    var g = list_grab(data,i,p,"Lang.","language_",12);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    list_grab(data,i,p,"Lang.","language_",12).appendTo(body);
+    var g = list_grab(data,i,p,"Equip.","equipment_",18);
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    list_grab(data,i,p,"Equip.","equipment_",18).appendTo(body);
+    var g = note_grab(data,i,p,"Notes","notes");
+    if (g) {
+        g.appendTo(body);
+    }
     i+=1;
-    note_grab(data,i,p,"Notes","notes").appendTo(body);
-    i+=1;
-    //var tr_blank=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body);
-    //var td_blank=$("<td></td>").attr("colspan","6").appendTo(tr_blank).attr("height","1").css("line-height","1px");
-    //i+=1;
     $('#overview_tree_foe').treegrid({
         'initialState': 'collapsed'
     });
@@ -241,21 +291,29 @@ function stat_span(data) {
 }
 
 function grab(data,i,p,label,key,type) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
-        .on("mouseover", row_mouse_over)
-        .on("mouseout", row_mouse_out);
-    var td1=$("<td></td>").html(label).appendTo(tr_e);
-    var td2=$("<td></td>").attr("colspan","5").html(data[type][key]).appendTo(tr_e);
-    return tr_e;
+    if (data[type][key]) {
+        var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+            .on("mouseover", row_mouse_over)
+            .on("mouseout", row_mouse_out);
+        var td1=$("<td></td>").html(label).appendTo(tr_e);
+        var td2=$("<td></td>").attr("colspan","5").html(data[type][key]).appendTo(tr_e);
+        return tr_e;
+    } else {
+        return false;
+    }
 }
 
 function note_grab(data,i,p,label,key) {
-    var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
-        .on("mouseover", row_mouse_over)
-        .on("mouseout", row_mouse_out);
-    var td1=$("<td></td>").html(label).appendTo(tr_e);
-    var td2=$("<td></td>").attr("colspan","5").html(data[key].replace(/(?:\r\n|\r|\n)/g, '<br />')).appendTo(tr_e);
-    return tr_e;
+    if (data[key]) {
+        var tr_e=$("<tr></tr>").addClass("treegrid-"+i+" treegrid-parent-"+p)
+            .on("mouseover", row_mouse_over)
+            .on("mouseout", row_mouse_out);
+        var td1=$("<td></td>").html(label).appendTo(tr_e);
+        var td2=$("<td></td>").attr("colspan","5").html(data[key].replace(/(?:\r\n|\r|\n)/g, '<br />')).appendTo(tr_e);
+        return tr_e;
+    } else {
+        return false;
+    }
 }
 
 function list_grab(data,i,p,label,key,N) {
@@ -270,9 +328,13 @@ function list_grab(data,i,p,label,key,N) {
         if (value) {
             lst.push(value)
         }
-    } 
-    var td2=$("<td></td>").attr("colspan","5").html(lst.join(", ")).appendTo(tr_e);
-    return tr_e;
+    }
+    if (lst.length>0) {
+        var td2=$("<td></td>").attr("colspan","5").html(lst.join(", ")).appendTo(tr_e);
+        return tr_e;
+    } else {
+        return false;
+    }
 }
 
 function talent_grab(data,i,p) {
@@ -288,9 +350,13 @@ function talent_grab(data,i,p) {
         if (data["checkbox"][v]) {
             tal.push(value)
         }
-    }); 
-    var td2=$("<td></td>").attr("colspan","5").html(tal.join(", ")).appendTo(tr_e);
-    return tr_e;
+    });
+    if (tal.length>0) {
+        var td2=$("<td></td>").attr("colspan","5").html(tal.join(", ")).appendTo(tr_e);
+        return tr_e;
+    } else {
+        return false;
+    }
 }
 
 function health_grab(data,i,p) {
