@@ -5,7 +5,7 @@ $.getJSON("./js/spells.json", function(data) {
     all_spells=data;
     //$.getJSON("Alice_save.json", add_foe);
 });
-          
+
 //$.getJSON("Alice_save.json", add_player);
 
 function add_player(data) {
@@ -106,7 +106,8 @@ function add_foe(data,number) {
     grab_weapons(data,i,p,body);
     i+=1;
     if (data["select"]["class"]=="Mage") {
-        grap_spells(data,i,p,body);
+        grab_spells(data,i,p,body);
+        i+=1;
     }
     var g = grab(data,i,p,"Class","class","select");
     if (g) {
@@ -221,7 +222,7 @@ $("#foe_upload").on("change", function() {
                 var dataText = evt.target.result;
                 var input_json = JSON.parse(dataText);
                 if (foe_number>1) {
-                    var original_name = input_json["text"]["name"]               
+                    var original_name = input_json["text"]["name"]
                     for (var f=0; f<foe_number; f++) {
                         input_json["text"]["name"]=original_name+" "+(f+1);
                         add_foe(input_json);
@@ -248,7 +249,7 @@ function remove_player(el) {
         $(".treegrid-"+value[2]).removeClass("active-row");
         $(".treegrid-parent-"+value[2]).removeClass("active-row");
         $(".stat-parent-"+value[2]).removeClass("active-row");
-        
+
         var idx_remove="";
         $.each(init_list, function(idx,value2) {
             if (value2[2]==i) {
@@ -492,10 +493,10 @@ function grab_weapons(data,i,p,body) {
             var td3=$("<td></td>").attr("colspan","2").html(data["text"]["damage_"+pad(j+1)]).appendTo(tr_e2);
             var td4=$("<td></td>").html(data["text"]["range_s_"+pad(j+1)]+"/"+data["text"]["range_l_"+pad(j+1)]).appendTo(tr_e2);
         }
-    }    
+    }
 };
 
-function grap_spells(data,i,p,body) {
+function grab_spells(data,i,p,body) {
     var li=0;
     var lp=i;
     var tr_e1=$("<tr></tr>").addClass("treegrid-"+i+" stat-parent-"+p).appendTo(body)
