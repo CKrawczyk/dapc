@@ -38,7 +38,7 @@ function make_skill_row1(skill_name) {
     var tr = $("<tr></tr>");
     var td = $("<td></td>").appendTo(tr);
     var row = $("<div></div>").addClass("row").appendTo(td);
-    var div1 = $("<div></div>").addClass("accordion-toggle col-xs-8").attr("data-toggle", "collapse").attr("data-target","#"+lower_name+"_row").appendTo(row);
+    var div1 = $("<div></div>").addClass("accordion-toggle col-xs-8").css("cursor","pointer").attr("data-toggle", "collapse").attr("data-target","#"+lower_name+"_row").appendTo(row);
     var span1 = $("<span></span>").addClass("skill-arrow glyphicon glyphicon-chevron-right").appendTo(div1);
     var h4 = $("<h4></h4>").html(skill_name).appendTo(div1);
 
@@ -47,7 +47,7 @@ function make_skill_row1(skill_name) {
     var span2 = $("<span></span>").addClass("input-group-addon").appendTo(input_group);
     var check_box = $("<input>").attr("type", "checkbox").attr("id",lower_name+"_prime").prop("disabled", true).appendTo(span2);
     var input = $("<input>").addClass("form-control edit-lock is-int").attr("id",lower_name+"_value").attr("type","text").appendTo(input_group);
-    
+
     return tr
 }
 
@@ -442,7 +442,7 @@ $("#update_spells").on("click", function() {
             spell_list.push(this.id)
         }
     });
-    update_spells(spell_list); 
+    update_spells(spell_list);
 });
 
 function update_spells(spell_list) {
